@@ -79,3 +79,11 @@ Click an image/video or its **Expand** button while presenting. **Return to slid
 Configure enablement, animation, captions, and image zoom under **Editor → Presentation settings → Media Focus**. Focus also works in interactive **Preview**; **Edit blocks** continues selecting media for editing. Focus settings travel with editable and playback exports.
 
 Focus fills the presentation canvas. An OBS camera source stays separate; use **Browser Source → Interact** to click the presentation. Camera capture and widgets are not included in this release.
+
+## Direct media editing and conference booths
+
+Drag images/videos onto the slide preview in **Edit blocks**, choose a placement zone, then use floating frames, resize handles, crop, snapping, keyboard nudges, and the media inspector. Add multiple media objects, adjust layers, and lock objects, slides or the presentation against accidental changes.
+
+For unattended use, open **Presentation settings → Booth mode / export**. Choose audience interactions, a return loop, an idle timeout and a presenter passphrase. Booth locks persist across refresh in the same browser. A dedicated Booth ZIP omits the editor, private notes, recovery data and unselected slides. Use a restricted OS/browser kiosk for computer-level protection.
+
+[Full editing and booth guide](docs/direct-editing-and-booth.md). Keep editable ZIP backups; older projects remain importable.

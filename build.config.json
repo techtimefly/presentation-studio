@@ -4,7 +4,9 @@
     "src/styles/experience.css",
     "src/styles/projects.css",
     "src/styles/visual.css",
-    "src/styles/focus.css"
+    "src/styles/focus.css",
+    "src/styles/canvas.css",
+    "src/styles/booth.css"
   ],
   "scripts": [
     "src/runtime/prelude.js",
@@ -19,6 +21,9 @@
     "src/runtime/themes.js",
     "src/runtime/blocks.js",
     "src/runtime/focus.js",
+    "src/runtime/canvas.js",
+    "src/runtime/booth-player.js",
+    "src/runtime/booth.js",
     "src/runtime/boot.js"
   ],
   "vendor": "vendor/jszip-3.10.1.min.js"

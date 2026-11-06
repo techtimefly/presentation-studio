@@ -51,3 +51,9 @@ The validation workflow runs structural and browser tests before uploading artif
 ## Legacy imports and storage
 
 `compat.js` contains two identifier-only aliases for earlier schema-v2 files and the earlier browser database. No product content is bundled. New files use `presentation-studio-project`; new recovery data uses `presentation-studio-editor-v1`. On browsers with IndexedDB enumeration, an empty new database receives an atomic copy of earlier projects and assets on first use. The earlier database is preserved. Browsers without enumeration can import an editable ZIP. Imports normalize the origin to imported and retain an independent reset baseline.
+
+## Canvas and booth extensions
+
+`canvas.js` validates optional normalized placement/crop/lock data and per-slide media object lists. Existing primary assignments remain unchanged. Preview pointer gestures update transient DOM and commit a single model transaction on release. Lock checks reject protected model/media/section differences before history commits; explicit unlock actions are separate. Media objects reuse the existing asset/reference and Media Focus paths.
+
+`booth.js` guards entry points and captures browser interactions while locked, persists salted passphrase verifiers and options, saves complete drafts before activation, and restores them on refresh. `booth-player.js` is a separately serializable playback runtime. Booth ZIPs build a minimal payload from selected visible slides and referenced assets rather than using the authoring source template. Its HTML has no editor or full project/recovery data. Local verifiers are a casual-tampering deterrent, not a security boundary against browser/OS control.

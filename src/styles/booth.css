@@ -1,0 +1,123 @@
+#booth-dialog {
+  max-width: 680px;
+  width: min(680px, 94vw);
+  padding: 24px;
+  border: 1px solid #a8bbd5;
+  border-radius: 16px;
+  font: 16px/1.5 Arial;
+  color: #10213c;
+  background: #fff;
+}
+#booth-dialog::backdrop {
+  background: #071121aa;
+}
+#booth-dialog label {
+  display: block;
+  margin: 10px 0;
+}
+#booth-dialog input:not([type="checkbox"]),
+#booth-dialog select {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  font: inherit;
+}
+#booth-dialog button {
+  padding: 10px 14px;
+  margin: 6px 0;
+  background: #0066ff;
+  color: #fff;
+  border: 0;
+  border-radius: 7px;
+  font: inherit;
+  cursor: pointer;
+}
+#booth-dialog [hidden] {
+  display: none !important;
+}
+#booth-message {
+  min-height: 1.5em;
+}
+#booth-unlock,
+#booth-indicator {
+  position: fixed;
+  bottom: 12px;
+  z-index: 500;
+  font: 14px Arial;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: #10213c;
+  color: #fff;
+}
+#booth-unlock {
+  right: 12px;
+  border: 1px solid #8ca5c8;
+  cursor: pointer;
+}
+#booth-indicator {
+  left: 12px;
+}
+.booth-active #hub-presentations,
+.booth-active #hub-player-more,
+.booth-active #menu,
+.booth-active #open-full-editor,
+.booth-active #edit-media,
+.booth-active #notes,
+.booth-active #info,
+.booth-active #help,
+.booth-active #presenter-notes {
+  display: none !important;
+}
+.booth-no-focus .mf-expand {
+  display: none !important;
+}
+.booth-no-video video {
+  pointer-events: none;
+}
+.booth-active #controls {
+  pointer-events: auto;
+}
+.booth-active [hidden] {
+  display: none !important;
+}
+
+.booth-no-nav #prev,
+.booth-no-nav #next,
+.booth-no-nav #play,
+.booth-no-nav .dots,
+.booth-no-questions #browse-questions,
+.booth-no-questions .qa-browse {
+  display: none !important;
+}
+
+#booth-audience-questions,
+#booth-return {
+  position: fixed;
+  bottom: 12px;
+  z-index: 500;
+  font: 14px Arial;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: #10213c;
+  color: #fff;
+  border: 1px solid #8ca5c8;
+  cursor: pointer;
+}
+#booth-audience-questions {
+  left: 145px;
+}
+#booth-return {
+  left: 300px;
+}
+
+#booth-dialog {
+  max-height: 90vh;
+  overflow: auto;
+}
+#booth-dialog h2 {
+  font:
+    700 26px/1.2 Arial,
+    sans-serif;
+  margin: 0 0 14px;
+  letter-spacing: normal;
+}

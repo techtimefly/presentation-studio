@@ -145,7 +145,7 @@ function mfRestore(state,{resumeVideo=true,advance=true}={}) {
   if(video){if(resumeVideo&&continueVideo)mfPlay(state.asset);else state.asset.pause();}
   if(state.returnFocus?.isConnected&&!state.returnFocus.closest('[inert]'))state.returnFocus.focus({preventScroll:true});
   activity();
-  if(advance&&!state.preview&&ended&&state.playing&&mediaGetAssignment(state.slide.dataset.mediaId)?.advance==='ended')requestAnimationFrame(()=>{if(!mfState&&slides[index]===state.slide&&playing)show(index+1);});
+  if(advance&&!state.preview&&ended&&state.playing&&(typeof ceFigureConfig==='function'?ceFigureConfig(state.figure):mediaGetAssignment(state.slide.dataset.mediaId))?.advance==='ended')requestAnimationFrame(()=>{if(!mfState&&slides[index]===state.slide&&playing)show(index+1);});
 }
 function mfClose() {
   const state=mfState;if(!state)return Promise.resolve();if(state.phase==='closing')return state.closing;

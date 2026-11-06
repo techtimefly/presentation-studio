@@ -1,0 +1,251 @@
+.ce-floating.media-box {
+  position: absolute !important;
+  inset: auto;
+  border-radius: 10px;
+}
+.ce-free .media-original {
+  inset: 0 !important;
+  display: flex !important;
+  pointer-events: none;
+}
+.ce-free .media-original button,
+.ce-free .media-original a {
+  pointer-events: auto;
+}
+.ce-hidden {
+  display: none !important;
+}
+.ce-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ce-row label {
+  flex: 1;
+  min-width: 80px;
+}
+.ce-row input {
+  width: 100%;
+}
+#ce-objects {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+#ce-objects [aria-pressed="true"] {
+  outline: 2px solid #0066ff;
+}
+.ce-selected {
+  outline: 4px solid #0066ff !important;
+  outline-offset: 3px;
+}
+.ce-handle {
+  position: absolute !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  background: #fff !important;
+  border: 4px solid #0066ff !important;
+  z-index: 60;
+  touch-action: none;
+}
+.ce-nw {
+  top: -12px;
+  left: -12px;
+  cursor: nwse-resize;
+}
+.ce-ne {
+  top: -12px;
+  right: -12px;
+  cursor: nesw-resize;
+}
+.ce-sw {
+  bottom: -12px;
+  left: -12px;
+  cursor: nesw-resize;
+}
+.ce-se {
+  bottom: -12px;
+  right: -12px;
+  cursor: nwse-resize;
+}
+.ce-dragging {
+  cursor: grabbing;
+  touch-action: none;
+}
+.ce-guides {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 1px),
+      #0066ff99 50%,
+      transparent calc(50% + 1px)
+    ),
+    linear-gradient(
+      transparent calc(50% - 1px),
+      #0066ff99 50%,
+      transparent calc(50% + 1px)
+    );
+}
+.ce-drop-zones {
+  position: absolute;
+  inset: 0;
+  background: #0d1d39bb;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+.ce-drop-zones > div {
+  display: grid;
+  place-items: center;
+  border: 2px dashed #bfd4ff;
+  background: #edf4ff;
+  color: #10213c;
+  font: 700 16px Arial;
+  border-radius: 10px;
+}
+.ce-drop-zones > .ce-drop-active {
+  background: #0066ff;
+  color: #fff;
+  border-style: solid;
+}
+#fe-preview {
+  position: relative;
+}
+.ce-floating .media-asset {
+  object-position: var(--media-pos) !important;
+}
+.me-preview-stage[data-block-mode="edit"] .media-box {
+  touch-action: none;
+}
+.me-preview-stage[data-block-mode="preview"] .ce-handle {
+  display: none !important;
+}
+
+.ce-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 265px;
+  gap: 16px;
+  align-items: start;
+  min-width: 0;
+}
+.ce-workspace #ce-panel {
+  max-height: 420px;
+  overflow: auto;
+  padding: 12px;
+  background: var(--editor-panel, #fff);
+  border: 1px solid #aebfd5;
+  border-radius: 9px;
+}
+.ce-workspace #fe-preview {
+  width: 100%;
+  max-width: none;
+  position: sticky;
+  top: 0;
+}
+.ce-workspace .ce-row label {
+  min-width: 85px;
+}
+.me-preview-stage[data-block-mode="edit"] .ce-free .media-original {
+  pointer-events: auto;
+}
+@media (max-width: 1100px) {
+  .ce-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ce-workspace #ce-panel {
+    max-height: 260px;
+  }
+}
+
+.ce-handle {
+  width: 40px !important;
+  height: 40px !important;
+}
+.ce-nw,
+.ce-ne {
+  top: -20px;
+}
+.ce-sw,
+.ce-se {
+  bottom: -20px;
+}
+.ce-nw,
+.ce-sw {
+  left: -20px;
+}
+.ce-ne,
+.ce-se {
+  right: -20px;
+}
+
+.editor-dark .ce-workspace #ce-panel {
+  background: #10213c;
+  color: #edf4ff;
+  border-color: #56708f;
+}
+.ce-guides::before {
+  content: "";
+  position: absolute;
+  inset: 2.5%;
+  border: 1px dashed #0066ff88;
+}
+
+#ce-panel {
+  font:
+    14px/1.45 Arial,
+    sans-serif;
+}
+#ce-panel > summary {
+  font:
+    700 14px/1.4 Arial,
+    sans-serif;
+  cursor: pointer;
+}
+
+.ce-placement-handle {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 65;
+  padding: 12px 18px;
+  border: 2px solid #8caff0;
+  border-radius: 8px;
+  background: #10213c;
+  color: #fff;
+  font:
+    22px/1.2 Arial,
+    sans-serif;
+  cursor: grab;
+  touch-action: none;
+}
+.ce-drop-zones > button {
+  display: grid;
+  place-items: center;
+  border: 2px dashed #bfd4ff;
+  background: #edf4ff;
+  color: #10213c;
+  font:
+    700 16px Arial,
+    sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ce-drop-zones > button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.ce-existing-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ce-existing-grid .ce-placement-cancel {
+  grid-column: 1 / -1;
+}
