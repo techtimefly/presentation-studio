@@ -2,7 +2,7 @@
 
 ## Unreleased — Direct media editing and booth mode
 
-Added preview file-drop zones, replacement, free placement, proportional resize, snapping, crop, keyboard nudges, multiple media objects, layering, captions, alternative text, hide/delete, and single-operation undo. Added object/slide/presentation design locks and protection against indirect section edits.
+Added preview file-drop zones, a draggable/keyboard-accessible placement grid for existing media, replacement, free placement, proportional resize, snapping, crop, keyboard nudges, multiple media objects, layering, captions, alternative text, hide/delete, and single-operation undo. Added object/slide/presentation design locks and protection against indirect section edits.
 
 Added configurable conference booth permissions, passphrase unlock, persistent browser lock/draft recovery, question access, idle return, and a separate offline booth playback export without authoring code, private notes or recovery content. Optional validated fields preserve older imports.
 

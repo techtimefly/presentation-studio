@@ -534,3 +534,137 @@ test("New presentation keeps the existing save-before-switch guard", async () =>
     await context.close();
   }
 });
+
+test("Existing media drags to placement zones, preserves settings, and undoes in one step", async () => {
+  const { p, context, errors } = await setup();
+  try {
+    await mediaSlide(p);
+    const initial = (await json(p)).state.media["studio-media"];
+    const handle = p.locator("#fe-preview .ce-placement-handle");
+    await handle.scrollIntoViewIfNeeded();
+    const h = await handle.boundingBox();
+    await p.mouse.move(h.x + h.width / 2, h.y + h.height / 2);
+    await p.mouse.down();
+    await p.locator(".ce-existing-grid").waitFor({ state: "visible" });
+    assert.equal(
+      await p.locator(".ce-existing-grid [data-drop-zone=replace]").count(),
+      0,
+    );
+    const zone = await p
+      .locator(".ce-existing-grid [data-drop-zone=left]")
+      .boundingBox();
+    await p.mouse.move(zone.x + zone.width / 2, zone.y + zone.height / 2, {
+      steps: 5,
+    });
+    await p.mouse.up();
+    assert.equal(await p.locator(".ce-existing-grid").count(), 0);
+    const placed = (await json(p)).state.media["studio-media"];
+    assert.equal(placed.layout, "left");
+    for (const key of ["src", "caption", "fit", "alt", "frame"])
+      assert.equal(placed[key], initial[key]);
+    await p.locator("#fe-undo").click();
+    assert.deepEqual((await json(p)).state.media["studio-media"], initial);
+    await p.locator("#fe-preview .ce-placement-handle").focus();
+    await p.keyboard.press("Enter");
+    await p.locator(".ce-existing-grid [data-drop-zone=background]").click();
+    assert.equal(
+      (await json(p)).state.media["studio-media"].layout,
+      "background",
+    );
+    assert.equal(
+      await p
+        .locator("#fe-preview [data-object-id=primary]")
+        .evaluate((el) => getComputedStyle(el).zIndex),
+      "0",
+    );
+    await p.locator("#fe-preview .ce-placement-handle").focus();
+    await p.keyboard.press("Enter");
+    await p.locator(".ce-existing-grid [data-drop-zone=floating]").click();
+    assert((await json(p)).state.media["studio-media"].canvas.placement);
+    assert.deepEqual(errors, []);
+  } finally {
+    await context.close();
+  }
+});
+
+test("Placement grid cancels on Escape and outside release; normal floating dragging stays free", async () => {
+  const { p, context, errors } = await setup();
+  try {
+    await mediaSlide(p);
+    await p.locator("#ce-float").click();
+    const before = (await json(p)).state.media["studio-media"];
+    await p.locator("#fe-preview .ce-placement-handle").click();
+    assert.equal(await p.locator(".ce-existing-grid").count(), 1);
+    await p.keyboard.press("Escape");
+    assert.equal(await p.locator(".ce-existing-grid").count(), 0);
+    assert.deepEqual((await json(p)).state.media["studio-media"], before);
+    const handle = p.locator("#fe-preview .ce-placement-handle");
+    await handle.scrollIntoViewIfNeeded();
+    const h = await handle.boundingBox();
+    await p.mouse.move(h.x + h.width / 2, h.y + h.height / 2);
+    await p.mouse.down();
+    await p.mouse.move(5, 5, { steps: 4 });
+    await p.mouse.up();
+    assert.equal(await p.locator(".ce-existing-grid").count(), 0);
+    assert.deepEqual((await json(p)).state.media["studio-media"], before);
+    const figure = p.locator("#fe-preview .ce-floating");
+    const r = await figure.boundingBox();
+    await p.mouse.move(r.x + r.width / 2, r.y + r.height / 2);
+    await p.mouse.down();
+    await p.mouse.move(r.x + r.width / 2 - 20, r.y + r.height / 2 + 10, {
+      steps: 4,
+    });
+    assert.equal(await p.locator(".ce-existing-grid").count(), 0);
+    await p.mouse.up();
+    assert.notDeepEqual(
+      (await json(p)).state.media["studio-media"].canvas.placement,
+      before.canvas.placement,
+    );
+    await p.locator("#ce-object-lock").click();
+    assert.equal(
+      await p.locator("#fe-preview .ce-placement-handle").count(),
+      0,
+    );
+    assert.deepEqual(errors, []);
+  } finally {
+    await context.close();
+  }
+});
+
+test("Structured placement of additional media keeps both assets and respects primary locks", async () => {
+  const { p, context, errors } = await setup();
+  try {
+    await mediaSlide(p);
+    await p.locator("#ce-add-object").check();
+    await upload(p, "additional-layout.svg");
+    const before = (await json(p)).state,
+      extra = before.mediaObjects["studio-media"][0];
+    await p.locator("#fe-preview .ce-placement-handle").focus();
+    await p.keyboard.press("Enter");
+    await p.locator(".ce-existing-grid [data-drop-zone=right]").click();
+    const after = (await json(p)).state;
+    assert.equal(after.media["studio-media"].src, extra.media.src);
+    assert.equal(after.media["studio-media"].layout, "right");
+    assert.equal(after.mediaObjects["studio-media"].length, 1);
+    assert.equal(
+      after.mediaObjects["studio-media"][0].media.src,
+      before.media["studio-media"].src,
+    );
+    assert(after.mediaObjects["studio-media"][0].media.canvas.placement);
+    await p.locator("#fe-undo").click();
+    assert.deepEqual((await json(p)).state.mediaObjects, before.mediaObjects);
+    await p.locator("#ce-objects button").first().click();
+    await p.locator("#ce-object-lock").click();
+    await p.locator("#ce-objects button").nth(1).click();
+    await p.locator("#fe-preview .ce-placement-handle").focus();
+    await p.keyboard.press("Enter");
+    await p.locator(".ce-existing-grid [data-drop-zone=left]").click();
+    assert.equal(
+      (await json(p)).state.media["studio-media"].src,
+      before.media["studio-media"].src,
+    );
+    assert.deepEqual(errors, []);
+  } finally {
+    await context.close();
+  }
+});

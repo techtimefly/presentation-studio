@@ -1,4 +1,5 @@
 // Optional canvas data augments the original one-media layout without rewriting it.
+let ceRelocate = null;
 let ceSelected = "primary",
   ceDrag = null,
   ceLockAction = false;
@@ -173,7 +174,12 @@ function ceStyle(figure, cfg, slide) {
   figure.dataset.objectId = figure.dataset.objectId || "primary";
   figure.hidden = c.hidden;
   figure.classList.toggle("ce-hidden", c.hidden);
-  figure.style.zIndex = c.z;
+  figure.style.zIndex =
+    cfg.layout === "background" &&
+    !c.placement &&
+    figure.dataset.objectId === "primary"
+      ? 0
+      : c.z;
   figure.style.setProperty("--media-pos", c.crop.x + "% " + c.crop.y + "%");
   if (c.placement) {
     const p = c.placement;
@@ -310,6 +316,8 @@ function cePanel() {
   }
   const cfg = ceConfig(),
     c = ceObject(cfg?.canvas);
+  $("ce-grid").disabled =
+    !cfg || vbMode !== "edit" || ceLocked(projectSelected, ceSelected);
   $("ce-selected").textContent = cfg ? cfg.name : "No media selected";
   for (const key of ["x", "y", "w", "h"])
     $("ce-" + key).value =
@@ -334,13 +342,34 @@ function cePanel() {
 function ceDecorate(root) {
   if (!root) return;
   root.querySelector(".ce-guides")?.remove();
-  root.querySelectorAll(".ce-handle").forEach((el) => el.remove());
+  root
+    .querySelectorAll(".ce-handle,.ce-placement-handle")
+    .forEach((el) => el.remove());
   for (const figure of root.querySelectorAll(".media-box")) {
     figure.classList.toggle(
       "ce-selected",
       vbMode === "edit" && figure.dataset.objectId === ceSelected,
     );
     figure.tabIndex = 0;
+    if (
+      vbMode === "edit" &&
+      figure.dataset.objectId === ceSelected &&
+      !ceLocked(projectSelected, ceSelected)
+    ) {
+      const handle = document.createElement("button");
+      handle.type = "button";
+      handle.className = "ce-placement-handle";
+      handle.textContent = "Change placement";
+      handle.title = "Drag to a placement zone, or click to choose";
+      handle.setAttribute("aria-label", "Change media placement");
+      handle.onclick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (!ceRelocate) ceBeginPlacement();
+      };
+      figure.append(handle);
+    }
+
     if (
       vbMode === "edit" &&
       figure.dataset.objectId === ceSelected &&
@@ -367,6 +396,7 @@ function ceDecorate(root) {
 }
 const cePreview = projectPreview;
 projectPreview = function (...args) {
+  if (ceRelocate) ceCancelPlacement();
   cePreview(...args);
   ceDecorate(projectPreviewNode);
   cePanel();
@@ -375,6 +405,13 @@ function ceGesture(e) {
   const root = projectPreviewNode,
     figure = e.target.closest(".media-box");
   if (!root?.contains(figure) || vbMode !== "edit" || e.button !== 0) return;
+  if (e.target.closest(".ce-placement-handle")) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    vbEnd(false);
+    ceBeginPlacement(e);
+    return;
+  }
   e.preventDefault();
   e.stopImmediatePropagation();
   vbEnd(false);
@@ -415,6 +452,13 @@ function ceGesture(e) {
   slide.append(guides);
 }
 function ceMove(e) {
+  if (ceRelocate?.pointer === e.pointerId) {
+    e.preventDefault();
+    ceRelocate.moved ||=
+      Math.hypot(e.clientX - ceRelocate.x, e.clientY - ceRelocate.y) > 6;
+    ceHighlightPlacement(e.clientX, e.clientY);
+    return;
+  }
   const d = ceDrag;
   if (!d || d.pointer !== e.pointerId) return;
   e.preventDefault();
@@ -476,6 +520,23 @@ function ceMove(e) {
   );
 }
 function ceEnd(cancel = false) {
+  if (ceRelocate) {
+    if (cancel) ceCancelPlacement();
+    else if (ceRelocate.pointer !== null) {
+      const active =
+        ceRelocate.layer.querySelector(".ce-drop-active")?.dataset.dropZone;
+      if (ceRelocate.moved) ceFinishPlacement(active);
+      else {
+        try {
+          ceRelocate.root.releasePointerCapture(ceRelocate.pointer);
+        } catch {}
+        ceRelocate.pointer = null;
+        ceRelocate.ignoreClick = true;
+        ceRelocate.layer.querySelector("button")?.focus();
+      }
+    }
+    return;
+  }
   const d = ceDrag;
   if (!d) return;
   ceDrag = null;
@@ -583,24 +644,155 @@ async function ceDrop(files, zone) {
     }
   });
 }
-function ceDropZones() {
+function ceDropZones(existing = false) {
   const host = $("fe-preview");
-  if (host.querySelector(".ce-drop-zones")) return;
+  const previous = host.querySelector(".ce-drop-zones");
+  if (previous && previous.classList.contains("ce-existing-grid") === existing)
+    return previous;
+  previous?.remove();
   const layer = document.createElement("div");
-  layer.className = "ce-drop-zones";
-  layer.innerHTML = ["replace", "left", "right", "background", "floating"]
-    .map(
-      (zone) =>
-        '<div data-drop-zone="' +
-        zone +
-        '">' +
-        (zone === "replace"
-          ? "Replace selected"
-          : zone[0].toUpperCase() + zone.slice(1)) +
-        "</div>",
-    )
-    .join("");
+  layer.className = "ce-drop-zones" + (existing ? " ce-existing-grid" : "");
+  layer.setAttribute("role", "group");
+  layer.setAttribute(
+    "aria-label",
+    existing ? "Change existing media placement" : "Drop media placement",
+  );
+  const zones = existing
+    ? ["left", "right", "background", "floating"]
+    : ["replace", "left", "right", "background", "floating"];
+  for (const zone of zones) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.dropZone = zone;
+    button.textContent =
+      zone === "replace"
+        ? "Replace selected"
+        : zone[0].toUpperCase() + zone.slice(1);
+    if (existing) button.onclick = () => ceFinishPlacement(zone);
+    layer.append(button);
+  }
+  if (existing) {
+    const cancel = document.createElement("button");
+    cancel.type = "button";
+    cancel.className = "ce-placement-cancel";
+    cancel.textContent = "Cancel placement (Esc)";
+    cancel.onclick = ceCancelPlacement;
+    layer.append(cancel);
+  }
   host.append(layer);
+  return layer;
+}
+function ceBeginPlacement(event = null) {
+  if (
+    ceRelocate ||
+    ceDrag ||
+    boothActive ||
+    vbMode !== "edit" ||
+    !$("full-editor").open ||
+    ceLocked(projectSelected, ceSelected) ||
+    !ceConfig()
+  )
+    return;
+  const root = projectPreviewNode,
+    figure = ceFigure(root);
+  if (!figure) return;
+  ceRelocate = {
+    root,
+    slideID: projectSelected,
+    objectID: ceSelected,
+    rect: ceDefaultRect(figure),
+    pointer: event?.pointerId ?? null,
+    x: event?.clientX ?? 0,
+    y: event?.clientY ?? 0,
+    moved: false,
+    layer: ceDropZones(true),
+  };
+  if (event) {
+    try {
+      root.setPointerCapture(event.pointerId);
+    } catch {}
+    ceHighlightPlacement(event.clientX, event.clientY);
+  } else ceRelocate.layer.querySelector("button")?.focus();
+}
+function ceHighlightPlacement(x, y) {
+  if (!ceRelocate) return;
+  const zone = document.elementFromPoint(x, y)?.closest("[data-drop-zone]");
+  ceRelocate.layer
+    .querySelectorAll("[data-drop-zone]")
+    .forEach((button) =>
+      button.classList.toggle("ce-drop-active", button === zone),
+    );
+}
+function ceCancelPlacement() {
+  const state = ceRelocate;
+  if (!state) return;
+  ceRelocate = null;
+  state.layer.remove();
+  try {
+    if (state.pointer !== null) state.root.releasePointerCapture(state.pointer);
+  } catch {}
+  if (state.root.isConnected)
+    ceFigure(state.root)
+      ?.querySelector(".ce-placement-handle")
+      ?.focus({ preventScroll: true });
+}
+function ceFinishPlacement(zone) {
+  const state = ceRelocate;
+  if (!state) return;
+  ceCancelPlacement();
+  if (
+    !["left", "right", "background", "floating"].includes(zone) ||
+    !state.root.isConnected ||
+    !$("full-editor").open ||
+    vbMode !== "edit" ||
+    boothActive ||
+    projectSelected !== state.slideID ||
+    ceLocked(state.slideID, state.objectID)
+  )
+    return;
+  const cfg = ceConfig(state.objectID, state.slideID);
+  if (!cfg) return;
+  const primary = projectState.media[state.slideID];
+  if (
+    zone !== "floating" &&
+    state.objectID !== "primary" &&
+    primary?.canvas?.locked
+  ) {
+    projectMessage(
+      "Unlock the primary media before changing which object uses the structured layout.",
+    );
+    return;
+  }
+  const oldFrame = state.root.querySelector('[data-object-id="primary"]');
+  const oldRect = oldFrame
+    ? ceDefaultRect(oldFrame)
+    : { x: 0.6, y: 0.5, w: 0.35, h: 0.4 };
+  projectChange(() => {
+    const next = {
+      ...projectCopy(cfg),
+      layout: zone === "floating" ? "inset" : zone,
+      canvas: {
+        ...ceObject(cfg.canvas),
+        placement: zone === "floating" ? state.rect : null,
+      },
+    };
+    if (zone === "background") next.canvas.z = 0;
+    if (zone !== "floating" && state.objectID !== "primary") {
+      projectState.mediaObjects[state.slideID] = ceObjects(
+        state.slideID,
+      ).filter((o) => o.id !== state.objectID);
+      if (primary)
+        projectState.mediaObjects[state.slideID].push({
+          id: projectID("object"),
+          media: {
+            ...projectCopy(primary),
+            canvas: { ...ceObject(primary.canvas), placement: oldRect },
+          },
+        });
+      projectState.media[state.slideID] = next;
+      ceSelected = "primary";
+    } else ceSetConfig(next, state.objectID, state.slideID);
+  });
 }
 function ceBind() {
   const panel = document.createElement("details");
@@ -619,7 +811,7 @@ function ceBind() {
           '" type="number" min="0" max="100" step="0.5"></label>',
       )
       .join("") +
-    '</div><div class="ce-row"><button id="ce-float">Free placement</button><button id="ce-reset">Reset to right layout</button></div><label>Image fit<select id="ce-fit"><option value="contain">Fit</option><option value="cover">Fill / crop</option></select></label><label class="fe-check"><input id="ce-crop" type="checkbox"> Drag image to crop (Fill)</label><label>Caption<input id="ce-caption"></label><label>Alternative text<input id="ce-alt"></label><div class="ce-row"><button id="ce-back">Send backward</button><button id="ce-front">Bring forward</button><button id="ce-delete">Delete media</button><button id="ce-object-lock">Lock object</button></div><label class="fe-check"><input id="ce-hidden" type="checkbox"> Hide object</label><p class="fe-hint">Select objects in this list when they overlap. Drag a floating frame to move; use corner handles to resize. Hold Shift for free proportions or Alt to bypass snapping. One gesture is one undo step.</p>';
+    '</div><div class="ce-row"><button id="ce-float">Free placement</button><button id="ce-grid">Change placement…</button><button id="ce-reset">Reset to right layout</button></div><label>Image fit<select id="ce-fit"><option value="contain">Fit</option><option value="cover">Fill / crop</option></select></label><label class="fe-check"><input id="ce-crop" type="checkbox"> Drag image to crop (Fill)</label><label>Caption<input id="ce-caption"></label><label>Alternative text<input id="ce-alt"></label><div class="ce-row"><button id="ce-back">Send backward</button><button id="ce-front">Bring forward</button><button id="ce-delete">Delete media</button><button id="ce-object-lock">Lock object</button></div><label class="fe-check"><input id="ce-hidden" type="checkbox"> Hide object</label><p class="fe-hint">Select objects in this list when they overlap. Drag a floating frame to move; use corner handles to resize. Hold Shift for free proportions or Alt to bypass snapping. One gesture is one undo step.</p>';
   const workspace = document.createElement("div");
   workspace.className = "ce-workspace";
   $("fe-preview").before(workspace);
@@ -663,6 +855,10 @@ function ceBind() {
       const cfg = ceConfig();
       if (cfg) fn(cfg);
     });
+  bind("ce-grid", () => {
+    vbEnd(false);
+    ceBeginPlacement();
+  });
   bind("ce-float", () => {
     const figure = ceFigure(),
       rect = figure
@@ -738,11 +934,32 @@ function ceBind() {
   );
   $("fe-preview").addEventListener("pointerdown", ceGesture, true);
   window.addEventListener("pointermove", ceMove);
-  window.addEventListener("pointerup", () => ceEnd());
+  window.addEventListener("pointerup", (event) => {
+    if (ceRelocate?.pointer === event.pointerId)
+      ceHighlightPlacement(event.clientX, event.clientY);
+    ceEnd();
+  });
   window.addEventListener("pointercancel", () => ceEnd(true));
   window.addEventListener(
     "keydown",
     (e) => {
+      if (
+        !ceRelocate &&
+        ["Enter", " "].includes(e.key) &&
+        e.target.closest?.(".ce-placement-handle")
+      ) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        vbEnd(false);
+        ceBeginPlacement();
+        return;
+      }
+      if (ceRelocate && e.key === "Escape") {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        ceCancelPlacement();
+        return;
+      }
       if (ceDrag && e.key === "Escape") {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -791,6 +1008,11 @@ function ceBind() {
     window.addEventListener(
       event,
       (e) => {
+        if (ceRelocate) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          return;
+        }
         if (!e.dataTransfer?.types.includes("Files")) return;
         e.preventDefault();
         if (
@@ -820,11 +1042,27 @@ function ceBind() {
       true,
     );
   window.addEventListener("dragleave", (e) => {
-    if (!e.relatedTarget)
+    if (!ceRelocate && !e.relatedTarget)
       $("fe-preview").querySelector(".ce-drop-zones")?.remove();
   });
-  window.addEventListener("drop", () =>
-    document.querySelector(".ce-drop-zones")?.remove(),
+  window.addEventListener("drop", () => {
+    if (!ceRelocate) document.querySelector(".ce-drop-zones")?.remove();
+  });
+  window.addEventListener(
+    "click",
+    (event) => {
+      if (ceRelocate?.ignoreClick) {
+        ceRelocate.ignoreClick = false;
+        return;
+      }
+      if (
+        ceRelocate?.pointer === null &&
+        !ceRelocate.layer.contains(event.target) &&
+        !event.target.closest(".ce-placement-handle")
+      )
+        ceCancelPlacement();
+    },
+    true,
   );
   cePanel();
 }

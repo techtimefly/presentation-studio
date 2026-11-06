@@ -210,3 +210,42 @@
     sans-serif;
   cursor: pointer;
 }
+
+.ce-placement-handle {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 65;
+  padding: 12px 18px;
+  border: 2px solid #8caff0;
+  border-radius: 8px;
+  background: #10213c;
+  color: #fff;
+  font:
+    22px/1.2 Arial,
+    sans-serif;
+  cursor: grab;
+  touch-action: none;
+}
+.ce-drop-zones > button {
+  display: grid;
+  place-items: center;
+  border: 2px dashed #bfd4ff;
+  background: #edf4ff;
+  color: #10213c;
+  font:
+    700 16px Arial,
+    sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ce-drop-zones > button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.ce-existing-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ce-existing-grid .ce-placement-cancel {
+  grid-column: 1 / -1;
+}
