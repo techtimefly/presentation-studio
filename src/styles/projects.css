@@ -1,0 +1,324 @@
+.hub-compat {
+  display: none !important;
+}
+.hub-menu {
+  position: relative;
+  font: 14px Arial;
+}
+.hub-menu > summary {
+  list-style: none;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  padding: 10px 14px;
+  border: 1px solid #a9bfdc;
+  border-radius: 8px;
+  background: #fff;
+  color: #0052cc;
+}
+.hub-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.hub-menu > summary:after {
+  content: " ▾";
+  font-size: 10px;
+}
+.hub-menu[open] > summary {
+  outline: 2px solid #0066ff;
+  outline-offset: 1px;
+}
+.hub-menu-items {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 7px);
+  z-index: 100;
+  width: 250px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #aebfd5;
+  border-radius: 10px;
+  box-shadow: 0 12px 35px #101c2f33;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hub-menu-items > button {
+  width: 100%;
+  text-align: left;
+  white-space: normal !important;
+  padding: 11px !important;
+  font: 14px Arial !important;
+}
+.hub-menu-items .hub-menu > summary {
+  font-size: 14px;
+}
+.hub-menu-items .hub-menu-items {
+  position: static;
+  box-shadow: none;
+  width: 100%;
+  margin-top: 7px;
+}
+#hub-player-more .hub-menu-items {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+#controls:has(.hub-menu[open]) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) !important;
+}
+.hub-menu summary:focus-visible,
+#hub-drop:focus-visible {
+  outline: 3px solid #0066ff;
+  outline-offset: 3px;
+}
+.hub-brand-group {
+  border-top: 1px solid #cbd6e5;
+  margin-top: 16px;
+  padding-top: 12px;
+}
+.hub-brand-group > summary {
+  font: 700 14px Arial;
+  cursor: pointer;
+  margin-bottom: 14px;
+}
+#hub-change-logo {
+  margin-bottom: 12px;
+}
+#full-editor .fe-top {
+  min-height: 88px;
+}
+#fe-title {
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#fe-status[data-save-state="failed"],
+#fe-status[data-save-state="unavailable"] {
+  color: #a12738 !important;
+}
+#hub-picker,
+#hub-switch {
+  margin: auto;
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+  overflow: auto;
+  padding: 28px;
+  border: 1px solid #bdcada;
+  border-radius: 16px;
+  background: #fff;
+  color: #101c2f;
+  font: 15px/1.5 Arial;
+}
+#hub-switch {
+  width: min(680px, 94vw);
+}
+#hub-picker::backdrop,
+#hub-switch::backdrop {
+  background: #101c2fb0;
+}
+#hub-picker h2,
+#hub-switch h2 {
+  font: 700 28px Arial;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+#hub-picker .eyebrow {
+  font: 12px Arial;
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+}
+.hub-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+.hub-heading p {
+  margin: 12px 0;
+  color: #596575;
+}
+.hub-picker-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+.hub-picker-actions button,
+#hub-picker button,
+#hub-switch button {
+  font: 14px Arial;
+  padding: 10px 14px;
+}
+#hub-picker label {
+  display: block;
+  margin: 16px 0 7px;
+}
+#hub-search {
+  width: 100%;
+  font: 15px Arial;
+  padding: 11px;
+  border: 1px solid #adbed5;
+  border-radius: 7px;
+}
+#hub-drop {
+  border: 2px dashed #a3b9d7;
+  border-radius: 9px;
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+  background: #eef4ff;
+  color: #234a7d;
+}
+#hub-drop.drag {
+  outline: 3px solid #0066ff;
+}
+#hub-project-list {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0;
+}
+.hub-project-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 15px;
+  background: #f4f7fb;
+  border: 1px solid #c8d4e4;
+  border-radius: 12px;
+}
+.hub-project-card h3 {
+  font: 700 19px/1.4 Arial;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+.hub-project-card p {
+  font: 12px/1.5 Arial;
+  color: #596575;
+  margin: 6px 0 14px;
+}
+.hub-card-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.hub-card-actions button {
+  font-size: 12px !important;
+  padding: 8px 10px !important;
+}
+.hub-project-thumb {
+  aspect-ratio: 16/9;
+  border: 1px solid #b5c5da;
+  border-top: 5px solid var(--hub-accent);
+  border-radius: 7px;
+  overflow: hidden;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.hub-project-thumb small {
+  font: 9px Arial;
+  letter-spacing: 1px;
+}
+.hub-project-thumb strong {
+  font: 700 18px/1.2 Arial;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hub-hint,
+.hub-empty {
+  font: 12px/1.6 Arial;
+  color: #596575;
+}
+#hub-switch-message {
+  color: #a12738;
+}
+#hub-picker [hidden],
+#hub-switch [hidden] {
+  display: none !important;
+}
+body.editor-dark
+  :is(#hub-picker, #hub-switch, .hub-menu-items, .hub-menu > summary) {
+  background: #152238;
+  color: #eaf2ff;
+  border-color: #4b607d;
+}
+body.editor-dark .hub-project-card {
+  background: #1c2c44;
+  border-color: #4b607d;
+}
+body.editor-dark
+  :is(.hub-heading p, .hub-project-card p, .hub-hint, .hub-empty) {
+  color: #b4c6df;
+}
+body.editor-dark #hub-search {
+  background: #0d1727;
+  color: #eef5ff;
+  border-color: #556985;
+}
+body.editor-dark #hub-drop {
+  background: #1a3254;
+  color: #c5dcff;
+  border-color: #6a8eba;
+}
+.playback-only #hub-presentations,
+.obs #hub-presentations {
+  display: none !important;
+}
+.obs #controls:has(.hub-menu[open]) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+@media (max-width: 1100px) {
+  #fe-title {
+    max-width: 270px;
+  }
+  #full-editor .fe-top {
+    flex-wrap: nowrap !important;
+  }
+  .fe-top-actions {
+    flex-wrap: nowrap !important;
+    gap: 5px;
+  }
+  #full-editor .fe-top-actions button {
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+}
+@media (max-width: 650px) {
+  .hub-project-card {
+    grid-template-columns: 1fr;
+  }
+  .hub-project-thumb {
+    max-width: 260px;
+  }
+  #hub-picker,
+  #hub-switch {
+    padding: 18px;
+  }
+  .hub-heading {
+    gap: 12px;
+  }
+  #fe-title {
+    max-width: 160px;
+  }
+  .hub-menu > summary {
+    padding: 8px;
+  }
+  .fe-top-actions {
+    flex-wrap: wrap !important;
+  }
+  #full-editor .fe-top {
+    flex-wrap: wrap !important;
+  }
+}
+
+#hub-picker button:disabled { opacity: .45; cursor: default; }
+/* Keep thin slide-navigation dots reachable at 720p. */
+@media (max-height: 760px) { #controls { bottom: 2px; } }

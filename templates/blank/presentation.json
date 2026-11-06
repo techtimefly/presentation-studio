@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "kind": "presentation-studio-project",
+  "meta": {
+    "id": "presentation-studio-blank-v1",
+    "name": "Untitled presentation",
+    "updatedAt": "2026-11-05T00:00:00.000Z"
+  },
+  "playbackOnly": false,
+  "state": {
+    "projectName": "Untitled presentation",
+    "slides": [
+      {
+        "id": "slide-7a07607d-3f73-4827-90a3-2021ab481474",
+        "title": "Your presentation",
+        "group": "section-405df504-7de5-40ca-b7f3-720ddf2e1864",
+        "template": "hero",
+        "classes": "",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "CUSTOMER PRESENTATION"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Your presentation"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Add your customer-facing explanation."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "KEY MESSAGE"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Add your key message"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Add supporting context."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "CUSTOMER PRESENTATION"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Your presentation"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Add your customer-facing explanation."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "KEY MESSAGE"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Add your key message"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Add supporting context."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "",
+        "duration": 12,
+        "hidden": false,
+        "notes": "",
+        "topic": "General",
+        "commands": null,
+        "templateCommands": null,
+        "_trashIndex": 0
+      }
+    ],
+    "trash": [],
+    "loops": {
+      "main": {
+        "name": "Main presentation",
+        "slideIds": [
+          "slide-7a07607d-3f73-4827-90a3-2021ab481474"
+        ]
+      }
+    },
+    "brand": {
+      "accent": "#0066ff",
+      "background": "#f4f6f8",
+      "ink": "#101c2f",
+      "font": "Arial",
+      "logo": "",
+      "family": "generic",
+      "headerTitle": "PRESENTATION",
+      "headerSubtitle": "",
+      "edition": "",
+      "presentationTheme": "light"
+    },
+    "media": {},
+    "sectionTrash": [],
+    "sections": [
+      {
+        "id": "section-405df504-7de5-40ca-b7f3-720ddf2e1864",
+        "name": "Main",
+        "kind": "slides",
+        "product": "generic",
+        "hidden": false,
+        "headerLabel": ""
+      }
+    ],
+    "origin": "blank",
+    "startingState": {
+      "projectName": "Untitled presentation",
+      "slides": [
+        {
+          "id": "slide-7a07607d-3f73-4827-90a3-2021ab481474",
+          "title": "Your presentation",
+          "group": "section-405df504-7de5-40ca-b7f3-720ddf2e1864",
+          "template": "hero",
+          "classes": "",
+          "tree": [
+            {
+              "tag": "div",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "p",
+                  "attrs": {
+                    "class": "eyebrow"
+                  },
+                  "children": [
+                    {
+                      "text": "CUSTOMER PRESENTATION"
+                    }
+                  ]
+                },
+                {
+                  "tag": "h1",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Your presentation"
+                    }
+                  ]
+                },
+                {
+                  "tag": "p",
+                  "attrs": {
+                    "class": "lead"
+                  },
+                  "children": [
+                    {
+                      "text": "Add your customer-facing explanation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "card accent"
+              },
+              "children": [
+                {
+                  "tag": "div",
+                  "attrs": {
+                    "class": "num"
+                  },
+                  "children": [
+                    {
+                      "text": "KEY MESSAGE"
+                    }
+                  ]
+                },
+                {
+                  "tag": "h3",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Add your key message"
+                    }
+                  ]
+                },
+                {
+                  "tag": "p",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Add supporting context."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "templateBase": [
+            {
+              "tag": "div",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "p",
+                  "attrs": {
+                    "class": "eyebrow"
+                  },
+                  "children": [
+                    {
+                      "text": "CUSTOMER PRESENTATION"
+                    }
+                  ]
+                },
+                {
+                  "tag": "h1",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Your presentation"
+                    }
+                  ]
+                },
+                {
+                  "tag": "p",
+                  "attrs": {
+                    "class": "lead"
+                  },
+                  "children": [
+                    {
+                      "text": "Add your customer-facing explanation."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "attrs": {
+                "class": "card accent"
+              },
+              "children": [
+                {
+                  "tag": "div",
+                  "attrs": {
+                    "class": "num"
+                  },
+                  "children": [
+                    {
+                      "text": "KEY MESSAGE"
+                    }
+                  ]
+                },
+                {
+                  "tag": "h3",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Add your key message"
+                    }
+                  ]
+                },
+                {
+                  "tag": "p",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "text": "Add supporting context."
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "templateClasses": "",
+          "duration": 12,
+          "hidden": false,
+          "notes": "",
+          "topic": "General",
+          "commands": null,
+          "templateCommands": null,
+          "_trashIndex": 0
+        }
+      ],
+      "trash": [],
+      "loops": {
+        "main": {
+          "name": "Main presentation",
+          "slideIds": [
+            "slide-7a07607d-3f73-4827-90a3-2021ab481474"
+          ]
+        }
+      },
+      "brand": {
+        "accent": "#0066ff",
+        "background": "#f4f6f8",
+        "ink": "#101c2f",
+        "font": "Arial",
+        "logo": "",
+        "family": "generic",
+        "headerTitle": "PRESENTATION",
+        "headerSubtitle": "",
+        "edition": "",
+        "presentationTheme": "light"
+      },
+      "media": {},
+      "sectionTrash": [],
+      "sections": [
+        {
+          "id": "section-405df504-7de5-40ca-b7f3-720ddf2e1864",
+          "name": "Main",
+          "kind": "slides",
+          "product": "generic",
+          "hidden": false,
+          "headerLabel": ""
+        }
+      ],
+      "origin": "blank"
+    }
+  },
+  "checkpoints": [],
+  "history": {
+    "past": [],
+    "future": []
+  }
+}

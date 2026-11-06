@@ -1,0 +1,16 @@
+name: Feature or template request
+description: Propose a workflow improvement or reusable presentation template.
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: User goal
+      description: Who needs this and what should they be able to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and example
+    validations:
+      required: true

@@ -1,0 +1,22 @@
+{
+  "name": "@se-appsec-sandbox/presentation-studio",
+  "version": "0.7.0",
+  "private": true,
+  "description": "Portable, independent HTML presentation player and editor",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/build.test.mjs",
+    "test:browser": "node --test tests/browser.test.mjs tests/experience.test.cjs tests/portability.test.mjs tests/projects.test.mjs tests/studio-demo.test.mjs tests/visual.test.mjs tests/focus.test.mjs tests/compat.test.mjs",
+    "check": "npm run build && npm test && npm run test:browser",
+    "package": "node scripts/package.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "license": "MIT"
+}

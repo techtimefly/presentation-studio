@@ -1,0 +1,21 @@
+name: Bug report
+description: Report a problem editing, presenting, or exporting.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected behavior and steps to reproduce. Do not attach customer material or credentials.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, operating system, and studio version
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Player, Editor, Media, Import/export, Recovery, Template, Other]

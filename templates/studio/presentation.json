@@ -1,0 +1,1824 @@
+{
+  "schemaVersion": 2,
+  "kind": "presentation-studio-project",
+  "meta": {
+    "id": "presentation-studio-demo-v1",
+    "name": "From idea to presentation",
+    "updatedAt": "2026-11-06T00:00:00.000Z"
+  },
+  "playbackOnly": false,
+  "state": {
+    "projectName": "From idea to presentation",
+    "slides": [
+      {
+        "id": "studio-welcome",
+        "title": "From idea to presentation",
+        "group": "studio-overview",
+        "template": "hero",
+        "classes": "",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "WELCOME TO PRESENTATION STUDIO"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "From idea to presentation"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Build a clear story. Make it your own. Share it anywhere."
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "attrs": {
+                  "class": "tag"
+                },
+                "children": [
+                  {
+                    "text": "A sample deck you can edit"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "YOUR STORY \u00b7 YOUR STYLE"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Start with something useful"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Explore the demo, replace the content, or start with a blank presentation."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "WELCOME TO PRESENTATION STUDIO"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "From idea to presentation"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Build a clear story. Make it your own. Share it anywhere."
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "attrs": {
+                  "class": "tag"
+                },
+                "children": [
+                  {
+                    "text": "A sample deck you can edit"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "YOUR STORY \u00b7 YOUR STYLE"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Start with something useful"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Explore the demo, replace the content, or start with a blank presentation."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Introduce this as editable sample content. Press J or click Edit to show the studio. Use Project \u2192 New presentation for Blank, Studio demo, or Import.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-story",
+        "title": "Tell a clear story",
+        "group": "studio-overview",
+        "template": "comparison",
+        "classes": "wide",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Tell a clear story"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Start with what your audience needs to understand."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "duo"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "The challenge"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Too much information makes the next step hard to see."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "The approach"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "One message per slide, supported by a useful example."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Tell a clear story"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Start with what your audience needs to understand."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "duo"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "The challenge"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Too much information makes the next step hard to see."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "The approach"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "One message per slide, supported by a useful example."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "wide",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Show the Comparison layout. Edit either card, preview the change, and use Undo to restore it. Ask the audience which message they would lead with.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-workflow",
+        "title": "Show how it works",
+        "group": "studio-demonstration",
+        "template": "workflow",
+        "classes": "wide",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Show how it works"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Turn a complicated process into three practical steps."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "editor-workflow"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "1. Prepare"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Choose your audience, message, and supporting content."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "2. Present"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Use a short loop or guide the discussion manually."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "3. Discuss"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Jump to a question, clarify details, and agree on next steps."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Show how it works"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Turn a complicated process into three practical steps."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "editor-workflow"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "1. Prepare"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Choose your audience, message, and supporting content."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "2. Present"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Use a short loop or guide the discussion manually."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "card"
+                },
+                "children": [
+                  {
+                    "tag": "h3",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "3. Discuss"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "p",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Jump to a question, clarify details, and agree on next steps."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "wide",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Demonstrate the Workflow layout. Explain that sections organize content, while loops select and order slides for playback. The main demo loop excludes Questions.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-table",
+        "title": "Make details easy to compare",
+        "group": "studio-demonstration",
+        "template": "table",
+        "classes": "wide editor-table-slide",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Make details easy to compare"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Choose the format that fits the conversation."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "detection-table-wrap"
+            },
+            "children": [
+              {
+                "tag": "table",
+                "attrs": {
+                  "class": "detection-table"
+                },
+                "children": [
+                  {
+                    "tag": "thead",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "th",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Format"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "th",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Best for"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "tbody",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Presentation loop"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "An unattended display or short overview"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Guided walkthrough"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "A live demonstration at your own pace"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Questions and answers"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "A conversation driven by your audience"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Make details easy to compare"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Choose the format that fits the conversation."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "detection-table-wrap"
+            },
+            "children": [
+              {
+                "tag": "table",
+                "attrs": {
+                  "class": "detection-table"
+                },
+                "children": [
+                  {
+                    "tag": "thead",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "th",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Format"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "th",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Best for"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "tbody",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Presentation loop"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "An unattended display or short overview"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Guided walkthrough"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "A live demonstration at your own pace"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "tr",
+                        "attrs": {},
+                        "children": [
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "Questions and answers"
+                              }
+                            ]
+                          },
+                          {
+                            "tag": "td",
+                            "attrs": {},
+                            "children": [
+                              {
+                                "text": "A conversation driven by your audience"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "wide editor-table-slide",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Open the Tables panel to edit a cell or add a row. Keep table text concise and inspect the footer clearance in the preview.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-media",
+        "title": "Bring your content to life",
+        "group": "studio-demonstration",
+        "template": "media",
+        "classes": "wide studio-demo-media",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Bring your content to life"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Use a visual to support your message\u2014not compete with it."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "attrs": {
+              "class": "note"
+            },
+            "children": [
+              {
+                "text": "This sample image is included. Replace it with your own screenshot, diagram, or video."
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Bring your content to life"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Use a visual to support your message\u2014not compete with it."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "p",
+            "attrs": {
+              "class": "note"
+            },
+            "children": [
+              {
+                "text": "This sample image is included. Replace it with your own screenshot, diagram, or video."
+              }
+            ]
+          }
+        ],
+        "templateClasses": "wide studio-demo-media",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Click Media beside the selected slide. Show the placement options, caption, sizing, and crop focus. The diagram is bundled and works offline. Videos are optional; commands and animations do not execute tasks.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-commands",
+        "title": "Walk through a task",
+        "group": "studio-demonstration",
+        "template": "code",
+        "classes": "steps-slide",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Walk through a task"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Show a short command and explain its expected result."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "terminal"
+                },
+                "children": [
+                  {
+                    "tag": "div",
+                    "attrs": {
+                      "class": "panelhead"
+                    },
+                    "children": [
+                      {
+                        "text": "SAFE EXAMPLE \u00b7 DISPLAY AND COPY ONLY"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "pre",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Write-Output 'Hello, presentation!'"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "button",
+                    "attrs": {
+                      "class": "copy-command"
+                    },
+                    "children": [
+                      {
+                        "text": "Copy command"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "attrs": {
+                      "class": "copy-status"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "steps-note"
+                },
+                "children": [
+                  {
+                    "text": "Expected result: Hello, presentation! Nothing is executed by this presentation."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "STUDIO DEMO"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Walk through a task"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Show a short command and explain its expected result."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "terminal"
+                },
+                "children": [
+                  {
+                    "tag": "div",
+                    "attrs": {
+                      "class": "panelhead"
+                    },
+                    "children": [
+                      {
+                        "text": "SAFE EXAMPLE \u00b7 DISPLAY AND COPY ONLY"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "pre",
+                    "attrs": {},
+                    "children": [
+                      {
+                        "text": "Write-Output 'Hello, presentation!'"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "button",
+                    "attrs": {
+                      "class": "copy-command"
+                    },
+                    "children": [
+                      {
+                        "text": "Copy command"
+                      }
+                    ]
+                  },
+                  {
+                    "tag": "div",
+                    "attrs": {
+                      "class": "copy-status"
+                    },
+                    "children": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "steps-note"
+                },
+                "children": [
+                  {
+                    "text": "Expected result: Hello, presentation! Nothing is executed by this presentation."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "steps-slide",
+        "templateCommands": {
+          "powershell": "Write-Output 'Hello, presentation!'",
+          "bash": "printf '%s\\n' 'Hello, presentation!'"
+        },
+        "duration": 12,
+        "hidden": false,
+        "notes": "Use the environment selector to switch between PowerShell and Bash. Copy the sample command. The studio only displays and copies text; execution happens outside the presentation.",
+        "topic": "",
+        "commands": {
+          "powershell": "Write-Output 'Hello, presentation!'",
+          "bash": "printf '%s\\n' 'Hello, presentation!'"
+        },
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-question",
+        "title": "How do I make this presentation my own?",
+        "group": "studio-questions",
+        "template": "qa",
+        "classes": "qa-slide",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "QUESTIONS / GETTING STARTED"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "How do I make this presentation my own?"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "qa-answer"
+                },
+                "children": [
+                  {
+                    "text": "Replace the sample text, add your logo and media, and choose a theme. Export an editable ZIP to keep a complete copy."
+                  }
+                ]
+              },
+              {
+                "tag": "button",
+                "attrs": {
+                  "class": "qa-browse"
+                },
+                "children": [
+                  {
+                    "text": "Browse questions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "TRY IT TOGETHER"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Open Edit, choose a slide, and change its heading. Your browser saves a recovery draft."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "QUESTIONS / GETTING STARTED"
+                  }
+                ]
+              },
+              {
+                "tag": "h2",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "How do I make this presentation my own?"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "qa-answer"
+                },
+                "children": [
+                  {
+                    "text": "Replace the sample text, add your logo and media, and choose a theme. Export an editable ZIP to keep a complete copy."
+                  }
+                ]
+              },
+              {
+                "tag": "button",
+                "attrs": {
+                  "class": "qa-browse"
+                },
+                "children": [
+                  {
+                    "text": "Browse questions"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "TRY IT TOGETHER"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Open Edit, choose a slide, and change its heading. Your browser saves a recovery draft."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "qa-slide",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Open Questions from Sections or press Q. Then choose Browse Questions or press B. Explain that more questions can be added to this section and searched by topic.",
+        "topic": "Getting started",
+        "commands": null,
+        "transition": "inherit"
+      },
+      {
+        "id": "studio-closing",
+        "title": "Make it yours",
+        "group": "studio-overview",
+        "template": "hero",
+        "classes": "",
+        "tree": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "YOUR NEXT STEP"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Make it yours."
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Customize your story. Save a complete copy. Open it wherever you present."
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "attrs": {
+                  "class": "tag"
+                },
+                "children": [
+                  {
+                    "text": "Edit \u00b7 Export \u00b7 Share"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "KEEP A PORTABLE COPY"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Export an editable ZIP"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Project \u2192 Export keeps your slides, media, notes, and recovery history together."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateBase": [
+          {
+            "tag": "div",
+            "attrs": {},
+            "children": [
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "eyebrow"
+                },
+                "children": [
+                  {
+                    "text": "YOUR NEXT STEP"
+                  }
+                ]
+              },
+              {
+                "tag": "h1",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Make it yours."
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {
+                  "class": "lead"
+                },
+                "children": [
+                  {
+                    "text": "Customize your story. Save a complete copy. Open it wherever you present."
+                  }
+                ]
+              },
+              {
+                "tag": "span",
+                "attrs": {
+                  "class": "tag"
+                },
+                "children": [
+                  {
+                    "text": "Edit \u00b7 Export \u00b7 Share"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "tag": "div",
+            "attrs": {
+              "class": "card accent"
+            },
+            "children": [
+              {
+                "tag": "div",
+                "attrs": {
+                  "class": "num"
+                },
+                "children": [
+                  {
+                    "text": "KEEP A PORTABLE COPY"
+                  }
+                ]
+              },
+              {
+                "tag": "h3",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Export an editable ZIP"
+                  }
+                ]
+              },
+              {
+                "tag": "p",
+                "attrs": {},
+                "children": [
+                  {
+                    "text": "Project \u2192 Export keeps your slides, media, notes, and recovery history together."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "templateClasses": "",
+        "templateCommands": null,
+        "duration": 12,
+        "hidden": false,
+        "notes": "Close by demonstrating the Project \u2192 Export menu. Editable ZIP is the durable handoff; browser drafts are local recovery copies. Presentations opens recent projects and external ZIP files.",
+        "topic": "",
+        "commands": null,
+        "transition": "inherit"
+      }
+    ],
+    "trash": [],
+    "sections": [
+      {
+        "id": "studio-overview",
+        "name": "Overview",
+        "kind": "slides",
+        "product": "generic",
+        "hidden": false,
+        "headerLabel": ""
+      },
+      {
+        "id": "studio-demonstration",
+        "name": "Demonstration",
+        "kind": "slides",
+        "product": "generic",
+        "hidden": false,
+        "headerLabel": ""
+      },
+      {
+        "id": "studio-questions",
+        "name": "Questions",
+        "kind": "qa",
+        "product": "generic",
+        "hidden": false,
+        "headerLabel": ""
+      }
+    ],
+    "sectionTrash": [],
+    "loops": {
+      "studio-main": {
+        "name": "Main demo loop",
+        "slideIds": [
+          "studio-welcome",
+          "studio-story",
+          "studio-workflow",
+          "studio-table",
+          "studio-media",
+          "studio-commands",
+          "studio-closing"
+        ]
+      }
+    },
+    "brand": {
+      "accent": "#0066ff",
+      "background": "#f4f6f8",
+      "ink": "#101c2f",
+      "font": "Arial",
+      "logo": "",
+      "family": "generic",
+      "headerTitle": "PRESENTATION STUDIO",
+      "headerSubtitle": "",
+      "edition": "EDIT \u00b7 PRESENT \u00b7 SHARE",
+      "presentationTheme": "light",
+      "logoLight": "",
+      "logoDark": "",
+      "logoSize": 40,
+      "logoPlacement": "left",
+      "titleLogo": false,
+      "themeColors": {}
+    },
+    "media": {
+      "studio-media": {
+        "kind": "image",
+        "src": "assets/studio-demo-workflow.svg",
+        "name": "Studio demo workflow.svg",
+        "layout": "right",
+        "ratio": "equal",
+        "fit": "contain",
+        "position": "center",
+        "frame": "border",
+        "corner": "right bottom",
+        "caption": "Prepare your story. Present the example. Discuss the next step.",
+        "captionPlace": "below",
+        "alt": "Three steps: Prepare, Demonstrate, and Discuss.",
+        "overlay": 55,
+        "autoplay": true,
+        "muted": true,
+        "loop": true,
+        "advance": "fixed"
+      }
+    },
+    "origin": "studio",
+    "presentation": {
+      "transition": "fade",
+      "speed": "normal",
+      "sectionTransition": "fade",
+      "disableMotion": false
+    }
+  },
+  "checkpoints": [],
+  "history": {
+    "past": [],
+    "future": []
+  }
+}

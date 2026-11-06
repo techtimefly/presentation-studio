@@ -1,0 +1,25 @@
+{
+  "styles": [
+    "src/styles/studio.css",
+    "src/styles/experience.css",
+    "src/styles/projects.css",
+    "src/styles/visual.css",
+    "src/styles/focus.css"
+  ],
+  "scripts": [
+    "src/runtime/prelude.js",
+    "src/runtime/compat.js",
+    "templates/studio/bootstrap.js",
+    "src/runtime/player.js",
+    "src/runtime/media.js",
+    "src/runtime/editor.js",
+    "src/runtime/studio.js",
+    "src/runtime/experience.js",
+    "src/runtime/projects.js",
+    "src/runtime/themes.js",
+    "src/runtime/blocks.js",
+    "src/runtime/focus.js",
+    "src/runtime/boot.js"
+  ],
+  "vendor": "vendor/jszip-3.10.1.min.js"
+}

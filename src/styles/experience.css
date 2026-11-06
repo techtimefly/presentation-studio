@@ -1,0 +1,217 @@
+/* Editor and wizard chrome does not override canvas typography. */
+#nx-wizard {
+  width: min(900px, 94vw);
+  max-height: 92vh;
+  overflow: auto;
+  margin: auto;
+  padding: 28px;
+  border: 1px solid #bdcada;
+  border-radius: 16px;
+  background: #fff;
+  color: #101c2f;
+  font: 15px/1.5 Arial;
+}
+#nx-wizard::backdrop {
+  background: #101c2fb0;
+}
+#nx-wizard h2 {
+  font: 700 28px Arial;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+#nx-wizard h3 {
+  font: 700 20px Arial;
+  margin: 12px 0 20px;
+}
+#nx-wizard .eyebrow {
+  font: 12px Arial;
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+}
+#nx-wizard label {
+  display: block;
+  margin: 12px 0 6px;
+}
+#nx-wizard input:not([type="radio"]):not([type="color"]),
+#nx-wizard select {
+  width: 100%;
+  padding: 10px;
+  font: 15px Arial;
+  border: 1px solid #aebfd5;
+  border-radius: 6px;
+  background: #fff;
+  color: #101c2f;
+}
+#nx-wizard input[type="color"] {
+  width: 100%;
+  height: 42px;
+}
+#nx-wizard [hidden] {
+  display: none !important;
+}
+.nx-wizard-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  border-top: 1px solid #ccd7e5;
+  padding-top: 18px;
+  margin-top: 22px;
+}
+.nx-wizard-actions button {
+  font: 14px Arial;
+  padding: 10px 15px;
+}
+#nx-wizard-progress,
+#nx-wizard-message {
+  font: 13px/1.5 Arial;
+  color: #596575;
+}
+#nx-wizard-message:empty {
+  display: none;
+}
+#nx-wizard-preview,
+#nx-wizard-final-preview,
+#nx-transition-canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border: 1px solid #bccce0;
+  border-radius: 8px;
+  background: #f4f6f8;
+}
+#nx-transition-canvas {
+  max-width: 680px;
+  margin-top: 14px;
+}
+#nx-logo-drop {
+  padding: 20px;
+  text-align: center;
+  border: 2px dashed #9eb9df;
+  border-radius: 8px;
+  background: #eef4ff;
+  color: #234a7d;
+  cursor: pointer;
+  margin: 16px 0;
+}
+#nx-logo-drop.drag {
+  outline: 3px solid #0066ff;
+}
+.nx-logo-swatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+.nx-logo-swatches > div {
+  min-height: 100px;
+  padding: 12px;
+  background: #f4f6f8;
+  color: #101c2f;
+  border: 1px solid #9eb0c9;
+  border-radius: 8px;
+  font: 12px Arial;
+}
+.nx-logo-swatches > div + div {
+  background: #07111f;
+  color: #eef5ff;
+}
+.nx-logo-swatches img {
+  display: block;
+  max-width: 100%;
+  max-height: 64px;
+  object-fit: contain;
+  margin: 12px auto 0;
+}
+.nx-check {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 20px !important;
+}
+body.editor-dark #nx-wizard {
+  background: #111b2c;
+  color: #eaf2ff;
+  border-color: #40516b;
+}
+body.editor-dark
+  #nx-wizard
+  :is(input:not([type="radio"]):not([type="color"]), select) {
+  background: #0d1727;
+  color: #eef5ff;
+  border-color: #556985;
+}
+body.editor-dark
+  #nx-wizard
+  :is(#nx-wizard-progress, #nx-wizard-message, .studio-hint) {
+  color: #b4c6df;
+}
+body.editor-dark #nx-logo-drop {
+  background: #1a3254;
+  color: #c5dcff;
+  border-color: #6a8eba;
+}
+#full-editor #nx-logo-size {
+  width: 100%;
+  margin: 8px 0 20px;
+}
+/* One transition owner; overrides the original implicit slide CSS transition. */
+#stage .slide {
+  transition: none !important;
+}
+#stage .slide.nx-transition-ghost {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: none;
+  z-index: 2;
+}
+.nx-transition-ghost * {
+  animation: none !important;
+  transition: none !important;
+}
+.nx-no-motion #stage * {
+  animation: none !important;
+  transition: none !important;
+}
+.nx-right-logo .brand .project-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+}
+.nx-right-logo .edition {
+  margin-right: 258px;
+}
+.nx-title-logo {
+  display: block;
+  max-width: 220px;
+  max-height: 64px;
+  object-fit: contain;
+  object-position: left;
+  margin: 0 0 20px;
+}
+.playback-only #nx-wizard {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #stage * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 700px) {
+  .nx-wizard-actions {
+    flex-wrap: wrap;
+  }
+  .nx-logo-swatches {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nx-transitioning #stage .slide * { animation-play-state: paused !important; }
+
+body.obs #controls { transition: none !important; }
+
+/* Keep the bundled demo image clear of the footer and loop dots. */
+.studio-demo-media.media-right .media-box,.studio-demo-media.media-left .media-box { top:24px; bottom:32px; }
