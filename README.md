@@ -1,6 +1,6 @@
 # Presentation Studio
 
-![Presentation Studio icon](assets/presentation-studio.svg)
+![Presentation Studio icon](assets/logo_light.png)
 
 A portable HTML presentation player and editor. Start with a short, generic demo or a blank presentation, then add your own content, branding, questions, and media. No application server or database is required.
 
