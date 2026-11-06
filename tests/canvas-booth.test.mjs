@@ -452,13 +452,11 @@ test("Booth idle return waits for video playback and resumes after it pauses", a
         ),
       ];
     });
-    await p
-      .locator("#ce-file")
-      .setInputFiles({
-        name: "booth-video.webm",
-        mimeType: "video/webm",
-        buffer: Buffer.from(bytes),
-      });
+    await p.locator("#ce-file").setInputFiles({
+      name: "booth-video.webm",
+      mimeType: "video/webm",
+      buffer: Buffer.from(bytes),
+    });
     await boothDialog(p);
     await p.locator("#booth-idle").fill("1");
     await p.locator("#booth-start").click();
@@ -512,6 +510,25 @@ test("A persistence failure refuses booth activation rather than losing the lock
       false,
     );
     assert.equal(await p.locator("#full-editor").isVisible(), true);
+    assert.deepEqual(errors, []);
+  } finally {
+    await context.close();
+  }
+});
+
+test("New presentation keeps the existing save-before-switch guard", async () => {
+  const { p, context, errors } = await setup();
+  try {
+    await p.locator("#fe-slide-title").fill("Unsaved conference draft");
+    await click(p, "#studio-new-open");
+    await p.locator("#hub-switch").waitFor({ state: "visible" });
+    assert.equal(await p.locator("#nx-wizard").isVisible(), false);
+    await p.locator("#hub-save-switch").click();
+    await p.locator("#nx-wizard").waitFor({ state: "visible" });
+    await p.locator('input[name="nx-start"][value="template"]').check();
+    await p.locator("#nx-wizard-defaults").click();
+    await p.locator("#nx-wizard").waitFor({ state: "hidden" });
+    assert.equal(await p.locator(".fe-slide-button").count(), 8);
     assert.deepEqual(errors, []);
   } finally {
     await context.close();

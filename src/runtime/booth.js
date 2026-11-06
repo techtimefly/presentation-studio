@@ -569,7 +569,8 @@ function boothBind() {
   $("edit-media").onclick = mediaOpen;
   $("hub-presentations").onclick = hubOpenPicker;
   $("hub-editor-projects").onclick = hubOpenPicker;
-  $("studio-new-open").onclick = nxOpenWizard;
+  // Preserve the project picker's save-before-switch handler. It calls the
+  // guarded nxOpenWizard binding after the current project has been saved.
   try {
     const saved = JSON.parse(localStorage.getItem(boothKey()) || "null");
     if (
