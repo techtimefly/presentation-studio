@@ -6,7 +6,8 @@
     "src/styles/visual.css",
     "src/styles/focus.css",
     "src/styles/canvas.css",
-    "src/styles/booth.css"
+    "src/styles/booth.css",
+    "src/styles/workspace.css"
   ],
   "scripts": [
     "src/runtime/prelude.js",
@@ -24,6 +25,7 @@
     "src/runtime/canvas.js",
     "src/runtime/booth-player.js",
     "src/runtime/booth.js",
+    "src/runtime/workspace.js",
     "src/runtime/boot.js"
   ],
   "vendor": "vendor/jszip-3.10.1.min.js"

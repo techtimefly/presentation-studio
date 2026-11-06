@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -63,9 +64,7 @@ async function upload(p, name = "second.svg", zone = "floating") {
   });
 }
 async function boothDialog(p) {
-  await p
-    .getByRole("tab", { name: "Presentation settings", exact: true })
-    .click();
+  await selectTab(p, "Presentation settings");
   await p.locator("#booth-open").click();
   await p.locator("#booth-password").fill("conference-test-passphrase");
   await p.locator("#booth-confirm").fill("conference-test-passphrase");
@@ -192,7 +191,7 @@ test("Drop replacement retains placement; design locks prevent direct and indire
       (await json(p)).state.slides.find((s) => s.id === "studio-media").title,
       locked.state.slides.find((s) => s.id === "studio-media").title,
     );
-    await p.getByRole("tab", { name: "Sections", exact: true }).click();
+    await selectTab(p, "Sections");
     await p
       .locator(".studio-section-row")
       .filter({ hasText: "Demonstration" })
@@ -205,7 +204,7 @@ test("Drop replacement retains placement; design locks prevent direct and indire
       ).name,
       "Demonstration",
     );
-    await p.getByRole("tab", { name: "Content", exact: true }).click();
+    await selectTab(p, "Content");
     await p.locator("#ce-slide-lock").click();
     await p.locator("#ce-project-lock").click();
     await p.locator("#fe-slide-title").fill("No edits");
@@ -304,7 +303,7 @@ test("Booth permissions block authoring and project switching, survive refresh, 
 test("Booth export removes authoring, private notes/history and omitted slides, and reopens offline", async () => {
   const { p, context, errors } = await setup();
   try {
-    await p.getByRole("tab", { name: "Notes", exact: true }).click();
+    await selectTab(p, "Notes");
     await p.locator("#fe-notes-text").fill("PRIVATE-NOTES-DO-NOT-SHIP");
     await p.waitForTimeout(400);
     await boothDialog(p);

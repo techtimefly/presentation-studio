@@ -87,3 +87,9 @@ Drag images/videos onto the slide preview in **Edit blocks**, choose a placement
 For unattended use, open **Presentation settings → Booth mode / export**. Choose audience interactions, a return loop, an idle timeout and a presenter passphrase. Booth locks persist across refresh in the same browser. A dedicated Booth ZIP omits the editor, private notes, recovery data and unselected slides. Use a restricted OS/browser kiosk for computer-level protection.
 
 [Full editing and booth guide](docs/direct-editing-and-booth.md). Keep editable ZIP backups; older projects remain importable.
+
+## Editor workspace
+
+Navigate sectioned slide thumbnails, select content to reveal its inspector, and use Fit or 50–200% zoom with Space-drag panning for closer editing. Drag thumbnails to reorder within a section. Project-wide branding, booth and recovery controls are in **Project settings**. View changes do not modify saved slide layouts or presentation playback.
+
+[Editor workspace guide](docs/editor-workspace.md).

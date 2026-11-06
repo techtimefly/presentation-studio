@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import {legacyHTML} from './legacy-fixture.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -181,9 +182,7 @@ test("existing legacy schema-v2 ZIP opens in generic studio and keeps its reset 
     assert.equal(await page.locator(".fe-slide-button").count(), 9);
     await page.locator("#fe-slide-title").fill("Temporary title");
     await page.waitForTimeout(400);
-    await page
-      .getByRole("tab", { name: "Recovery & reset", exact: true })
-      .click();
+    await selectTab(page, "Recovery & reset");
     await page.locator("#fe-recovery-panel details > summary").click();
     await page.locator("#fe-reset-project").click();
     await page.locator("#fe-confirm-accept").click();

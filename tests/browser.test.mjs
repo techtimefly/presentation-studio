@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import {legacyHTML} from './legacy-fixture.mjs';
 import { click, reveal, addSlide } from './ui.mjs';
 import test from 'node:test';
@@ -34,7 +35,7 @@ test('legacy template retains all 9 slides and both customer question banks', as
 });
 test('blank editing, section recovery, gallery, independent themes, and ZIP export', async () => {
   const { page, errors } = await setup('presentation-studio-blank.html');
-  const tab = name => page.getByRole('tab', { name, exact: true }).click();
+  const tab = name => selectTab(page, name);
   try {
     await page.locator('#open-full-editor').click();
     assert.equal(await page.locator('.fe-slide-button').count(), 1);
@@ -92,7 +93,7 @@ test('presentation canvas matches the theme preview in dark and light modes', as
   const { page, errors } = await setup('synthetic-legacy.html');
   try {
     await page.locator('#open-full-editor').click();
-    await page.getByRole('tab', { name: 'Branding', exact: true }).click();
+    await selectTab(page, 'Branding');
     for (const [mode, background] of [['dark', 'rgb(7, 17, 31)'], ['light', 'rgb(244, 246, 248)']]) {
       await page.locator('#studio-presentation-theme').selectOption(mode);
       await page.locator('#studio-theme-apply').click();
@@ -103,7 +104,7 @@ test('presentation canvas matches the theme preview in dark and light modes', as
       await page.locator('#fe-close').click();
       assert.deepEqual(await palette('#stage'), preview);
       await page.locator('#open-full-editor').click();
-      await page.getByRole('tab', { name: 'Branding', exact: true }).click();
+      await selectTab(page, 'Branding');
     }
     assert.deepEqual(errors, []);
   } finally { await page.close(); }

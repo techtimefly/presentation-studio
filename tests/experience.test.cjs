@@ -3,7 +3,7 @@ const { chromium } = require("playwright"),
   fs = require("fs"),
   path = require("path");
 (async () => {
-  const {click,reveal,addSlide} = await import("./ui.mjs");
+  const {click,reveal,addSlide,selectTab} = await import("./ui.mjs");
   const b = await chromium.launch({
     ...(process.env.CHROMIUM_EXECUTABLE_PATH
       ? { executablePath: process.env.CHROMIUM_EXECUTABLE_PATH }
@@ -21,7 +21,7 @@ const { chromium } = require("playwright"),
     console.log("ERROR", e.message);
   });
   const root = process.cwd() + "/";
-  const tab = (n) => p.getByRole("tab", { name: n, exact: true }).click();
+  const tab = (n) => selectTab(p, n);
   const download = async (sel, name) => {
     const d = p.waitForEvent("download");
     await click(p,sel);

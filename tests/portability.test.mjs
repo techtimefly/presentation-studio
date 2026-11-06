@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import { archivePath } from './archive-path.mjs';
 import { click, reveal } from './ui.mjs';
 import test from "node:test";
@@ -50,7 +51,7 @@ test("theme logos, brand presets, and transition overrides survive editable and 
   });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  const tab = (name) => page.getByRole("tab", { name, exact: true }).click();
+  const tab = (name) => selectTab(page, name);
   const download = async (selector, name) => {
     const event = page.waitForEvent("download");
     await click(page, selector);
@@ -125,9 +126,7 @@ test("theme logos, brand presets, and transition overrides survive editable and 
       );
       if (kind === "editable") {
         await reopened.locator("#open-full-editor").click();
-        await reopened
-          .getByRole("tab", { name: "Presentation settings", exact: true })
-          .click();
+        await selectTab(reopened, "Presentation settings");
         assert.equal(
           await reopened.locator("#nx-slide-transition").inputValue(),
           "slide",

@@ -18,3 +18,19 @@ export async function addSlide(page, template) {
   await page.locator('[data-template="' + template + '"]').click();
   await page.locator("#studio-gallery-apply").click();
 }
+export async function selectTab(page, name) {
+  if (await page.locator("#we-settings-open").count()) {
+    const project = [
+      "Branding",
+      "Presentation settings",
+      "Sections",
+      "Kiosk loops",
+      "Recovery & reset",
+    ].includes(name);
+    const open = await page.locator("#we-settings").evaluate((el) => el.open);
+    if (project && !open) await page.locator("#we-settings-open").click();
+    else if (!project && open) await page.locator("#we-settings-close").click();
+    if (name === "Content") name = "Slide";
+  }
+  await page.getByRole("tab", { name, exact: true }).click();
+}
