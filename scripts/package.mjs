@@ -8,7 +8,7 @@ const sandbox = { setImmediate, clearImmediate, setTimeout, clearTimeout, Uint8A
 vm.runInNewContext(await readFile(resolve(root, 'vendor/jszip-3.10.1.min.js'), 'utf8'), sandbox);
 const zip = new sandbox.JSZip();
 // Fixed timestamps make repeated packages reproducible.
-for (const file of ['dist/presentation-studio.html', 'dist/presentation-studio-blank.html', 'README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'CONTRIBUTING.md', 'docs/architecture.md', 'docs/content-and-branding.md', 'docs/open-source-release.md', 'docs/roadmap.md', 'docs/troubleshooting.md', 'docs/images/studio-demo.png', 'docs/images/theme-gallery.png', 'docs/images/block-editing.png', 'docs/quick-start.md', 'docs/content-and-branding.md', 'examples/layout-sampler.json', 'examples/README.md', 'examples/sample-diagram.svg']) {
+for (const file of ['dist/presentation-studio.html', 'dist/presentation-studio-blank.html', 'README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'CONTRIBUTING.md', 'docs/architecture.md', 'docs/direct-editing-and-booth.md', 'docs/content-and-branding.md', 'docs/open-source-release.md', 'docs/roadmap.md', 'docs/troubleshooting.md', 'docs/images/studio-demo.png', 'docs/images/theme-gallery.png', 'docs/images/block-editing.png', 'docs/quick-start.md', 'docs/content-and-branding.md', 'examples/layout-sampler.json', 'examples/README.md', 'examples/sample-diagram.svg']) {
   zip.file(file.replace(/^dist\//, ''), new Uint8Array(await readFile(resolve(root, file))), { date: new Date('2026-01-01T00:00:00Z') });
 }
 // Include project artwork by its current filename, including nested assets.

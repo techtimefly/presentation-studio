@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — Direct media editing and booth mode
+
+Added preview file-drop zones, replacement, free placement, proportional resize, snapping, crop, keyboard nudges, multiple media objects, layering, captions, alternative text, hide/delete, and single-operation undo. Added object/slide/presentation design locks and protection against indirect section edits.
+
+Added configurable conference booth permissions, passphrase unlock, persistent browser lock/draft recovery, question access, idle return, and a separate offline booth playback export without authoring code, private notes or recovery content. Optional validated fields preserve older imports.
+
 ## 0.7.0 — Independent open-source release
 
 Removed the archived vendor deck, product Q&A, commands, results, documentation links, and archive build. Added neutral export/schema/storage identifiers, import-only compatibility, a copy migration for browser recovery drafts, synthetic compatibility fixtures, an original icon, and the MIT license. Public source is prepared with a clean initial history.
