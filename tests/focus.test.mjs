@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
@@ -30,7 +31,7 @@ test('Live focus fills canvas, restores pause, respects settings and reduced mot
  await p.keyboard.press('ArrowRight');assert.equal(await p.locator('#media-focus').count(),1);
  await p.keyboard.press('Escape');await p.waitForSelector('#media-focus',{state:'detached'});
  assert.equal(await p.locator('#play').textContent(),'Play');
- await p.locator('#open-full-editor').click();await p.getByRole('tab',{name:'Presentation settings',exact:true}).click();await click(p,'#mf-setting-enabled');await p.locator('#mf-setting-animation').selectOption('fade');const downloaded=p.waitForEvent('download');await click(p,'#fe-export-json');const file=await downloaded;assert.equal(JSON.parse(await readFile(await file.path(),'utf8')).state.presentation.mediaFocus.animation,'fade');await p.locator('#fe-close').click();assert.equal(await p.locator('#stage .mf-expand').count(),0);
+ await p.locator('#open-full-editor').click();await selectTab(p, 'Presentation settings');await click(p,'#mf-setting-enabled');await p.locator('#mf-setting-animation').selectOption('fade');const downloaded=p.waitForEvent('download');await click(p,'#fe-export-json');const file=await downloaded;assert.equal(JSON.parse(await readFile(await file.path(),'utf8')).state.presentation.mediaFocus.animation,'fade');await p.locator('#fe-close').click();assert.equal(await p.locator('#stage .mf-expand').count(),0);
  assert.deepEqual(errors,[]);
  }finally{await p.close();}});
 test('Video keeps its element, position, and user pause decision through focus',async()=>{const {p,errors}=await setup();try{

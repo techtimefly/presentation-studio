@@ -653,7 +653,8 @@ function vbAttach(root) {
         if (
           vbSession &&
           !vbSession.el.contains(document.activeElement) &&
-          !$("vb-toolbar").contains(document.activeElement)
+          !$("vb-toolbar").contains(document.activeElement) &&
+          !document.activeElement?.closest("#we-font-controls")
         ) {
           vbEnd(true);
         }

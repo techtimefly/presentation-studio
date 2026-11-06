@@ -10,7 +10,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node --test tests/build.test.mjs",
-    "test:browser": "node --test tests/browser.test.mjs tests/experience.test.cjs tests/portability.test.mjs tests/projects.test.mjs tests/studio-demo.test.mjs tests/visual.test.mjs tests/focus.test.mjs tests/compat.test.mjs tests/canvas-booth.test.mjs",
+    "test:browser": "node --test tests/browser.test.mjs tests/experience.test.cjs tests/portability.test.mjs tests/projects.test.mjs tests/studio-demo.test.mjs tests/visual.test.mjs tests/focus.test.mjs tests/compat.test.mjs tests/canvas-booth.test.mjs tests/workspace.test.mjs",
     "check": "npm run build && npm test && npm run test:browser",
     "package": "node scripts/package.mjs",
     "serve": "node scripts/serve.mjs"

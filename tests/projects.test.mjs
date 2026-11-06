@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
@@ -18,7 +19,7 @@ const options = {
 const browser = await chromium.launch(options);
 test.after(() => browser.close());
 const tab = (page, name) =>
-  page.getByRole("tab", { name, exact: true }).click();
+  selectTab(page, name);
 async function saved(page) {
   await page.waitForFunction(
     () => document.getElementById("fe-status").dataset.saveState === "saved",
@@ -66,7 +67,7 @@ test("compact controls and recent drafts support safe switching, duplication, ba
     await page.locator("#open-full-editor").click();
     assert.equal(
       await page.locator(".fe-top-actions>button:visible").count(),
-      4,
+      5,
     );
     await tab(page, "Branding");
     await page.locator("#fe-project-name").fill("Customer A");

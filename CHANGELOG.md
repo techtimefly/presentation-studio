@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — Editor workspace
+
+Added a three-column editor with a contextual inspector, sectioned lazy-rendered thumbnails, lock/hidden indicators, within-section drag reordering, block font-size controls, and a separate project settings dialog. Added Fit and 50–200% editor zoom, pointer-centered wheel zoom, keyboard shortcuts and Space/middle-button panning. Transient view state does not enter project data or playback. Existing editing, booth and legacy import flows remain supported.
+
 ## Unreleased — Direct media editing and booth mode
 
 Added preview file-drop zones, a draggable/keyboard-accessible placement grid for existing media, replacement, free placement, proportional resize, snapping, crop, keyboard nudges, multiple media objects, layering, captions, alternative text, hide/delete, and single-operation undo. Added object/slide/presentation design locks and protection against indirect section edits.

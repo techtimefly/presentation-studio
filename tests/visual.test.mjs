@@ -1,3 +1,4 @@
+import { selectTab } from './ui.mjs';
 import { archivePath } from './archive-path.mjs';
 import {legacyHTML} from './legacy-fixture.mjs';
 import test from "node:test";
@@ -32,7 +33,7 @@ vm.runInNewContext(
   await readFile(resolve(root, "vendor/jszip-3.10.1.min.js"), "utf8"),
   sandbox,
 );
-const tab = (p, name) => p.getByRole("tab", { name, exact: true }).click();
+const tab = (p, name) => selectTab(p, name);
 async function download(p, selector, name) {
   const event = p.waitForEvent("download");
   await click(p, selector);
@@ -300,7 +301,7 @@ test("inline text, formatting, cards, lists, safe paste, tables, and commands us
     await p.locator("#fe-undo").click();
     assert.equal(await p.locator("#fe-preview .editor-bullets li").count(), 3);
     await p.locator("#fe-redo").click();
-    await p.locator("#fe-preview .card").click({ position: { x: 8, y: 8 } });
+    await p.locator("#fe-preview .card").click({ position: { x: 2, y: 2 } });
     assert.equal(await p.locator("#vb-selection-label").innerText(), "Card");
     await p.locator("#vb-duplicate").click();
     assert.equal(await p.locator("#fe-preview .card").count(), 2);
