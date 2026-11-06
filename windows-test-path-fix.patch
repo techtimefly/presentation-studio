@@ -1,0 +1,101 @@
+From ad654e75a66f51216adb2951b7fa0a1841fc18b4 Mon Sep 17 00:00:00 2001
+From: Codex <codex@openai.com>
+Date: Fri, 6 Nov 2026 08:05:11 -0800
+Subject: [PATCH] Fix ZIP extraction test containment checks on Windows
+
+---
+ tests/archive-path.mjs     | 12 ++++++++++++
+ tests/build.test.mjs       | 17 +++++++++++++++++
+ tests/portability.test.mjs |  4 ++--
+ tests/visual.test.mjs      |  4 ++--
+ 4 files changed, 33 insertions(+), 4 deletions(-)
+ create mode 100644 tests/archive-path.mjs
+
+diff --git a/tests/archive-path.mjs b/tests/archive-path.mjs
+new file mode 100644
+index 0000000..7dd26b1
+--- /dev/null
++++ b/tests/archive-path.mjs
+@@ -0,0 +1,12 @@
++import path from 'node:path';
++
++// ZIP entry names use '/', but extracted filesystem paths follow the host OS.
++// Check the relative path rather than comparing platform-specific prefixes.
++export function archivePath(destination, name, paths = path) {
++  const target = paths.resolve(destination, name);
++  const relative = paths.relative(paths.resolve(destination), target);
++  if (!relative || relative === '..' || relative.startsWith('..' + paths.sep) || paths.isAbsolute(relative)) {
++    throw new Error('ZIP entry escapes extraction destination: ' + name);
++  }
++  return target;
++}
+diff --git a/tests/build.test.mjs b/tests/build.test.mjs
+index f14332e..418c618 100644
+--- a/tests/build.test.mjs
++++ b/tests/build.test.mjs
+@@ -1,3 +1,5 @@
++import { archivePath } from './archive-path.mjs';
++import { posix, win32 } from 'node:path';
+ import test from 'node:test';
+ import assert from 'node:assert/strict';
+ import { readFile, readdir } from 'node:fs/promises';
+@@ -82,3 +84,18 @@ test('public distributions have no vendor content and retain only identifier-onl
+   }
+   assert.deepEqual((await readdir(new URL('../dist',import.meta.url))).filter(x=>x.endsWith('.html')).sort(),['presentation-studio-blank.html','presentation-studio.html']);
+ });
++
++
++test('ZIP extraction paths stay inside their destination on Windows and POSIX', () => {
++  for (const [paths, destination] of [[posix, '/tmp/project'], [win32, 'C:\\Users\\demo\\project']]) {
++    for (const name of ['index.html', 'assets/logo.png', 'assets/deep/video.webm']) {
++      assert.equal(archivePath(destination, name, paths), paths.resolve(destination, name));
++    }
++    for (const name of ['', '.', '..', '../outside.txt', '../project-other/file.txt', 'assets/../../outside.txt']) {
++      assert.throws(() => archivePath(destination, name, paths), /escapes extraction/);
++    }
++  }
++  for (const name of ['..\\outside.txt', 'D:\\elsewhere\\file.txt', 'C:\\Users\\demo\\project-other\\file.txt', '\\\\server\\share\\file.txt']) {
++    assert.throws(() => archivePath('C:\\Users\\demo\\project', name, win32), /escapes extraction/);
++  }
++});
+diff --git a/tests/portability.test.mjs b/tests/portability.test.mjs
+index 91a4311..d789692 100644
+--- a/tests/portability.test.mjs
++++ b/tests/portability.test.mjs
+@@ -1,3 +1,4 @@
++import { archivePath } from './archive-path.mjs';
+ import { click, reveal } from './ui.mjs';
+ import test from "node:test";
+ import assert from "node:assert/strict";
+@@ -36,8 +37,7 @@ async function unpack(file, destination) {
+   );
+   for (const [name, entry] of Object.entries(zip.files)) {
+     if (entry.dir) continue;
+-    const path = resolve(destination, name);
+-    assert(path.startsWith(resolve(destination) + "/"));
++    const path = archivePath(destination, name);
+     await mkdir(dirname(path), { recursive: true });
+     await writeFile(path, await entry.async("uint8array"));
+   }
+diff --git a/tests/visual.test.mjs b/tests/visual.test.mjs
+index c3265e0..2265293 100644
+--- a/tests/visual.test.mjs
++++ b/tests/visual.test.mjs
+@@ -1,3 +1,4 @@
++import { archivePath } from './archive-path.mjs';
+ import {legacyHTML} from './legacy-fixture.mjs';
+ import test from "node:test";
+ import assert from "node:assert/strict";
+@@ -62,8 +63,7 @@ async function unpack(file, folder) {
+   );
+   for (const [name, entry] of Object.entries(zip.files)) {
+     if (entry.dir) continue;
+-    const path = resolve(folder, name);
+-    assert(path.startsWith(folder + "/"));
++    const path = archivePath(folder, name);
+     await mkdir(dirname(path), { recursive: true });
+     await writeFile(path, await entry.async("uint8array"));
+   }
+-- 
+2.51.1
+

@@ -1,3 +1,4 @@
+import { archivePath } from './archive-path.mjs';
 import {legacyHTML} from './legacy-fixture.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -62,8 +63,7 @@ async function unpack(file, folder) {
   );
   for (const [name, entry] of Object.entries(zip.files)) {
     if (entry.dir) continue;
-    const path = resolve(folder, name);
-    assert(path.startsWith(folder + "/"));
+    const path = archivePath(folder, name);
     await mkdir(dirname(path), { recursive: true });
     await writeFile(path, await entry.async("uint8array"));
   }

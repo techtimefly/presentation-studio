@@ -1,3 +1,5 @@
+import { archivePath } from './archive-path.mjs';
+import { posix, win32 } from 'node:path';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -81,4 +83,19 @@ test('public distributions have no vendor content and retain only identifier-onl
     const pack=JSON.parse(html.match(/<script id="project-config" type="application\/json">([\s\S]*?)<\/script>/)[1]);assert.equal(pack.kind,'presentation-studio-project');
   }
   assert.deepEqual((await readdir(new URL('../dist',import.meta.url))).filter(x=>x.endsWith('.html')).sort(),['presentation-studio-blank.html','presentation-studio.html']);
+});
+
+
+test('ZIP extraction paths stay inside their destination on Windows and POSIX', () => {
+  for (const [paths, destination] of [[posix, '/tmp/project'], [win32, 'C:\\Users\\demo\\project']]) {
+    for (const name of ['index.html', 'assets/logo.png', 'assets/deep/video.webm']) {
+      assert.equal(archivePath(destination, name, paths), paths.resolve(destination, name));
+    }
+    for (const name of ['', '.', '..', '../outside.txt', '../project-other/file.txt', 'assets/../../outside.txt']) {
+      assert.throws(() => archivePath(destination, name, paths), /escapes extraction/);
+    }
+  }
+  for (const name of ['..\\outside.txt', 'D:\\elsewhere\\file.txt', 'C:\\Users\\demo\\project-other\\file.txt', '\\\\server\\share\\file.txt']) {
+    assert.throws(() => archivePath('C:\\Users\\demo\\project', name, win32), /escapes extraction/);
+  }
 });
