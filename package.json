@@ -1,6 +1,6 @@
 {
   "name": "@se-appsec-sandbox/presentation-studio",
-  "version": "0.7.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Portable, independent HTML presentation player and editor",
   "type": "module",
